@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="4b09c19d068247e98f968d38abe10110" Name="Diagram1" ZoomLevel="50">
+        <EntityTypeShape EntityType="StockModel.cidade" Width="1.5" PointX="5.25" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.entrada_produto" Width="1.5" PointX="12" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.estado" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.fornecedor" Width="1.5" PointX="7.5" PointY="3" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.grupo_produto" Width="1.5" PointX="7.5" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.inventario_estoque" Width="1.5" PointX="12" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.local_armazenamento" Width="1.5" PointX="7.5" PointY="11.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.marca_produto" Width="1.5" PointX="7.5" PointY="14" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.pai" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.perfil" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.produto" Width="1.5" PointX="9.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.saida_produto" Width="1.5" PointX="12" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.unidade_medida" Width="1.5" PointX="7.5" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockModel.usuario" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <AssociationConnector Association="StockModel.FK__cidade__id_estad__5441852A" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__fornecedo__id_ci__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__entrada_p__id_pr__5DCAEF64" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__estado__id_pais__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__fornecedo__id_es__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__fornecedo__id_pa__5535A963" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__produto__id_forn__59063A47" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__produto__id_grup__59FA5E80" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__inventari__id_pr__5FB337D6" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__produto__id_loca__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__produto__id_marc__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__produto__id_unid__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.FK__saida_pro__id_pr__5EBF139D" ManuallyRouted="false" />
+        <AssociationConnector Association="StockModel.perfil_usuario" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

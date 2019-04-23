@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StockModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="cidade">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <Property Name="id_estado" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="estado" Relationship="Self.FK__cidade__id_estad__5441852A" FromRole="cidade" ToRole="estado" />
+    <NavigationProperty Name="fornecedors" Relationship="Self.FK__fornecedo__id_ci__571DF1D5" FromRole="cidade" ToRole="fornecedor" />
+  </EntityType>
+  <EntityType Name="entrada_produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id_produto" Type="Int32" Nullable="false" />
+    <Property Name="quant" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="produto" Relationship="Self.FK__entrada_p__id_pr__5DCAEF64" FromRole="entrada_produto" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="estado">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="uf" Type="String" MaxLength="2" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <Property Name="id_pais" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="cidades" Relationship="Self.FK__cidade__id_estad__5441852A" FromRole="estado" ToRole="cidade" />
+    <NavigationProperty Name="pai" Relationship="Self.FK__estado__id_pais__534D60F1" FromRole="estado" ToRole="pais" />
+    <NavigationProperty Name="fornecedors" Relationship="Self.FK__fornecedo__id_es__5629CD9C" FromRole="estado" ToRole="fornecedor" />
+  </EntityType>
+  <EntityType Name="fornecedor">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="razao_social" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="num_documento" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="tipo" Type="Int32" Nullable="false" />
+    <Property Name="telefone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="contato" Type="String" MaxLength="60" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="logradouro" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="numero" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="complemento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="cep" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="id_pais" Type="Int32" Nullable="false" />
+    <Property Name="id_estado" Type="Int32" Nullable="false" />
+    <Property Name="id_cidade" Type="Int32" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="cidade" Relationship="Self.FK__fornecedo__id_ci__571DF1D5" FromRole="fornecedor" ToRole="cidade" />
+    <NavigationProperty Name="estado" Relationship="Self.FK__fornecedo__id_es__5629CD9C" FromRole="fornecedor" ToRole="estado" />
+    <NavigationProperty Name="pai" Relationship="Self.FK__fornecedo__id_pa__5535A963" FromRole="fornecedor" ToRole="pais" />
+    <NavigationProperty Name="produtoes" Relationship="Self.FK__produto__id_forn__59063A47" FromRole="fornecedor" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="grupo_produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ativo" Type="Boolean" />
+    <NavigationProperty Name="produtoes" Relationship="Self.FK__produto__id_grup__59FA5E80" FromRole="grupo_produto" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="inventario_estoque">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id_produto" Type="Int32" Nullable="false" />
+    <Property Name="quant_estoque" Type="Int32" Nullable="false" />
+    <Property Name="quant_inventario" Type="Int32" Nullable="false" />
+    <Property Name="motivo" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="produto" Relationship="Self.FK__inventari__id_pr__5FB337D6" FromRole="inventario_estoque" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="local_armazenamento">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="produtoes" Relationship="Self.FK__produto__id_loca__5AEE82B9" FromRole="local_armazenamento" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="marca_produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="produtoes" Relationship="Self.FK__produto__id_marc__5BE2A6F2" FromRole="marca_produto" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="pai">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="codigo" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="estadoes" Relationship="Self.FK__estado__id_pais__534D60F1" FromRole="pais" ToRole="estado" />
+    <NavigationProperty Name="fornecedors" Relationship="Self.FK__fornecedo__id_pa__5535A963" FromRole="pais" ToRole="fornecedor" />
+  </EntityType>
+  <EntityType Name="perfil">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="usuarios" Relationship="Self.perfil_usuario" FromRole="perfil" ToRole="usuario" />
+  </EntityType>
+  <EntityType Name="produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="codigo" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="preco_custo" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="preco_venda" Type="Decimal" Precision="7" Scale="2" Nullable="false" />
+    <Property Name="quant_estoque" Type="Int32" Nullable="false" />
+    <Property Name="id_unidade_medida" Type="Int32" Nullable="false" />
+    <Property Name="id_grupo" Type="Int32" Nullable="false" />
+    <Property Name="id_marca" Type="Int32" Nullable="false" />
+    <Property Name="id_fornecedor" Type="Int32" Nullable="false" />
+    <Property Name="id_local_armazenamento" Type="Int32" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <Property Name="imagem" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="entrada_produto" Relationship="Self.FK__entrada_p__id_pr__5DCAEF64" FromRole="produto" ToRole="entrada_produto" />
+    <NavigationProperty Name="fornecedor" Relationship="Self.FK__produto__id_forn__59063A47" FromRole="produto" ToRole="fornecedor" />
+    <NavigationProperty Name="grupo_produto" Relationship="Self.FK__produto__id_grup__59FA5E80" FromRole="produto" ToRole="grupo_produto" />
+    <NavigationProperty Name="inventario_estoque" Relationship="Self.FK__inventari__id_pr__5FB337D6" FromRole="produto" ToRole="inventario_estoque" />
+    <NavigationProperty Name="local_armazenamento" Relationship="Self.FK__produto__id_loca__5AEE82B9" FromRole="produto" ToRole="local_armazenamento" />
+    <NavigationProperty Name="marca_produto" Relationship="Self.FK__produto__id_marc__5BE2A6F2" FromRole="produto" ToRole="marca_produto" />
+    <NavigationProperty Name="unidade_medida" Relationship="Self.FK__produto__id_unid__5CD6CB2B" FromRole="produto" ToRole="unidade_medida" />
+    <NavigationProperty Name="saida_produto" Relationship="Self.FK__saida_pro__id_pr__5EBF139D" FromRole="produto" ToRole="saida_produto" />
+  </EntityType>
+  <EntityType Name="saida_produto">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="numero" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="data" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="id_produto" Type="Int32" Nullable="false" />
+    <Property Name="quant" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="produto" Relationship="Self.FK__saida_pro__id_pr__5EBF139D" FromRole="saida_produto" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="unidade_medida">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nome" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="sigla" Type="String" MaxLength="3" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="produtoes" Relationship="Self.FK__produto__id_unid__5CD6CB2B" FromRole="unidade_medida" ToRole="produto" />
+  </EntityType>
+  <EntityType Name="usuario">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="senha" Type="String" MaxLength="32" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="nome" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="perfils" Relationship="Self.perfil_usuario" FromRole="usuario" ToRole="perfil" />
+  </EntityType>
+  <Association Name="FK__cidade__id_estad__5441852A">
+    <End Role="estado" Type="Self.estado" Multiplicity="1" />
+    <End Role="cidade" Type="Self.cidade" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="cidade">
+        <PropertyRef Name="id_estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__fornecedo__id_ci__571DF1D5">
+    <End Role="cidade" Type="Self.cidade" Multiplicity="1" />
+    <End Role="fornecedor" Type="Self.fornecedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="cidade">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="fornecedor">
+        <PropertyRef Name="id_cidade" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__entrada_p__id_pr__5DCAEF64">
+    <End Role="produto" Type="Self.produto" Multiplicity="1" />
+    <End Role="entrada_produto" Type="Self.entrada_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="entrada_produto">
+        <PropertyRef Name="id_produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__estado__id_pais__534D60F1">
+    <End Role="pais" Type="Self.pai" Multiplicity="1" />
+    <End Role="estado" Type="Self.estado" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pais">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="estado">
+        <PropertyRef Name="id_pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__fornecedo__id_es__5629CD9C">
+    <End Role="estado" Type="Self.estado" Multiplicity="1" />
+    <End Role="fornecedor" Type="Self.fornecedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="estado">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="fornecedor">
+        <PropertyRef Name="id_estado" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__fornecedo__id_pa__5535A963">
+    <End Role="pais" Type="Self.pai" Multiplicity="1" />
+    <End Role="fornecedor" Type="Self.fornecedor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="pais">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="fornecedor">
+        <PropertyRef Name="id_pais" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__produto__id_forn__59063A47">
+    <End Role="fornecedor" Type="Self.fornecedor" Multiplicity="1" />
+    <End Role="produto" Type="Self.produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="fornecedor">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="id_fornecedor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__produto__id_grup__59FA5E80">
+    <End Role="grupo_produto" Type="Self.grupo_produto" Multiplicity="1" />
+    <End Role="produto" Type="Self.produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="grupo_produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="id_grupo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__inventari__id_pr__5FB337D6">
+    <End Role="produto" Type="Self.produto" Multiplicity="1" />
+    <End Role="inventario_estoque" Type="Self.inventario_estoque" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="inventario_estoque">
+        <PropertyRef Name="id_produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__produto__id_loca__5AEE82B9">
+    <End Role="local_armazenamento" Type="Self.local_armazenamento" Multiplicity="1" />
+    <End Role="produto" Type="Self.produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="local_armazenamento">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="id_local_armazenamento" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__produto__id_marc__5BE2A6F2">
+    <End Role="marca_produto" Type="Self.marca_produto" Multiplicity="1" />
+    <End Role="produto" Type="Self.produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="marca_produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="id_marca" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__produto__id_unid__5CD6CB2B">
+    <End Role="unidade_medida" Type="Self.unidade_medida" Multiplicity="1" />
+    <End Role="produto" Type="Self.produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="unidade_medida">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="produto">
+        <PropertyRef Name="id_unidade_medida" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__saida_pro__id_pr__5EBF139D">
+    <End Role="produto" Type="Self.produto" Multiplicity="1" />
+    <End Role="saida_produto" Type="Self.saida_produto" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="produto">
+        <PropertyRef Name="id" />
+      </Principal>
+      <Dependent Role="saida_produto">
+        <PropertyRef Name="id_produto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="perfil_usuario">
+    <End Role="perfil" Type="Self.perfil" Multiplicity="*" />
+    <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="cidades" EntityType="Self.cidade" />
+    <EntitySet Name="entrada_produto" EntityType="Self.entrada_produto" />
+    <EntitySet Name="estadoes" EntityType="Self.estado" />
+    <EntitySet Name="fornecedors" EntityType="Self.fornecedor" />
+    <EntitySet Name="grupo_produto" EntityType="Self.grupo_produto" />
+    <EntitySet Name="inventario_estoque" EntityType="Self.inventario_estoque" />
+    <EntitySet Name="local_armazenamento" EntityType="Self.local_armazenamento" />
+    <EntitySet Name="marca_produto" EntityType="Self.marca_produto" />
+    <EntitySet Name="pais" EntityType="Self.pai" />
+    <EntitySet Name="perfils" EntityType="Self.perfil" />
+    <EntitySet Name="produtoes" EntityType="Self.produto" />
+    <EntitySet Name="saida_produto" EntityType="Self.saida_produto" />
+    <EntitySet Name="unidade_medida" EntityType="Self.unidade_medida" />
+    <EntitySet Name="usuarios" EntityType="Self.usuario" />
+    <AssociationSet Name="FK__cidade__id_estad__5441852A" Association="Self.FK__cidade__id_estad__5441852A">
+      <End Role="estado" EntitySet="estadoes" />
+      <End Role="cidade" EntitySet="cidades" />
+    </AssociationSet>
+    <AssociationSet Name="FK__fornecedo__id_ci__571DF1D5" Association="Self.FK__fornecedo__id_ci__571DF1D5">
+      <End Role="cidade" EntitySet="cidades" />
+      <End Role="fornecedor" EntitySet="fornecedors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__entrada_p__id_pr__5DCAEF64" Association="Self.FK__entrada_p__id_pr__5DCAEF64">
+      <End Role="produto" EntitySet="produtoes" />
+      <End Role="entrada_produto" EntitySet="entrada_produto" />
+    </AssociationSet>
+    <AssociationSet Name="FK__estado__id_pais__534D60F1" Association="Self.FK__estado__id_pais__534D60F1">
+      <End Role="pais" EntitySet="pais" />
+      <End Role="estado" EntitySet="estadoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__fornecedo__id_es__5629CD9C" Association="Self.FK__fornecedo__id_es__5629CD9C">
+      <End Role="estado" EntitySet="estadoes" />
+      <End Role="fornecedor" EntitySet="fornecedors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__fornecedo__id_pa__5535A963" Association="Self.FK__fornecedo__id_pa__5535A963">
+      <End Role="pais" EntitySet="pais" />
+      <End Role="fornecedor" EntitySet="fornecedors" />
+    </AssociationSet>
+    <AssociationSet Name="FK__produto__id_forn__59063A47" Association="Self.FK__produto__id_forn__59063A47">
+      <End Role="fornecedor" EntitySet="fornecedors" />
+      <End Role="produto" EntitySet="produtoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__produto__id_grup__59FA5E80" Association="Self.FK__produto__id_grup__59FA5E80">
+      <End Role="grupo_produto" EntitySet="grupo_produto" />
+      <End Role="produto" EntitySet="produtoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__inventari__id_pr__5FB337D6" Association="Self.FK__inventari__id_pr__5FB337D6">
+      <End Role="produto" EntitySet="produtoes" />
+      <End Role="inventario_estoque" EntitySet="inventario_estoque" />
+    </AssociationSet>
+    <AssociationSet Name="FK__produto__id_loca__5AEE82B9" Association="Self.FK__produto__id_loca__5AEE82B9">
+      <End Role="local_armazenamento" EntitySet="local_armazenamento" />
+      <End Role="produto" EntitySet="produtoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__produto__id_marc__5BE2A6F2" Association="Self.FK__produto__id_marc__5BE2A6F2">
+      <End Role="marca_produto" EntitySet="marca_produto" />
+      <End Role="produto" EntitySet="produtoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__produto__id_unid__5CD6CB2B" Association="Self.FK__produto__id_unid__5CD6CB2B">
+      <End Role="unidade_medida" EntitySet="unidade_medida" />
+      <End Role="produto" EntitySet="produtoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__saida_pro__id_pr__5EBF139D" Association="Self.FK__saida_pro__id_pr__5EBF139D">
+      <End Role="produto" EntitySet="produtoes" />
+      <End Role="saida_produto" EntitySet="saida_produto" />
+    </AssociationSet>
+    <AssociationSet Name="perfil_usuario" Association="Self.perfil_usuario">
+      <End Role="perfil" EntitySet="perfils" />
+      <End Role="usuario" EntitySet="usuarios" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

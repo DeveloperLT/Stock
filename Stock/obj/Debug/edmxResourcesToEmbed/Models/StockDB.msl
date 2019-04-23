@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="StockModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="cidades">
+      <EntityTypeMapping TypeName="StockModel.cidade">
+        <MappingFragment StoreEntitySet="cidade">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="entrada_produto">
+      <EntityTypeMapping TypeName="StockModel.entrada_produto">
+        <MappingFragment StoreEntitySet="entrada_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+          <ScalarProperty Name="quant" ColumnName="quant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="estadoes">
+      <EntityTypeMapping TypeName="StockModel.estado">
+        <MappingFragment StoreEntitySet="estado">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="uf" ColumnName="uf" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="fornecedors">
+      <EntityTypeMapping TypeName="StockModel.fornecedor">
+        <MappingFragment StoreEntitySet="fornecedor">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="razao_social" ColumnName="razao_social" />
+          <ScalarProperty Name="num_documento" ColumnName="num_documento" />
+          <ScalarProperty Name="tipo" ColumnName="tipo" />
+          <ScalarProperty Name="telefone" ColumnName="telefone" />
+          <ScalarProperty Name="contato" ColumnName="contato" />
+          <ScalarProperty Name="logradouro" ColumnName="logradouro" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="complemento" ColumnName="complemento" />
+          <ScalarProperty Name="cep" ColumnName="cep" />
+          <ScalarProperty Name="id_pais" ColumnName="id_pais" />
+          <ScalarProperty Name="id_estado" ColumnName="id_estado" />
+          <ScalarProperty Name="id_cidade" ColumnName="id_cidade" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="grupo_produto">
+      <EntityTypeMapping TypeName="StockModel.grupo_produto">
+        <MappingFragment StoreEntitySet="grupo_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventario_estoque">
+      <EntityTypeMapping TypeName="StockModel.inventario_estoque">
+        <MappingFragment StoreEntitySet="inventario_estoque">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+          <ScalarProperty Name="quant_estoque" ColumnName="quant_estoque" />
+          <ScalarProperty Name="quant_inventario" ColumnName="quant_inventario" />
+          <ScalarProperty Name="motivo" ColumnName="motivo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="local_armazenamento">
+      <EntityTypeMapping TypeName="StockModel.local_armazenamento">
+        <MappingFragment StoreEntitySet="local_armazenamento">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="marca_produto">
+      <EntityTypeMapping TypeName="StockModel.marca_produto">
+        <MappingFragment StoreEntitySet="marca_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="pais">
+      <EntityTypeMapping TypeName="StockModel.pai">
+        <MappingFragment StoreEntitySet="pais">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="perfils">
+      <EntityTypeMapping TypeName="StockModel.perfil">
+        <MappingFragment StoreEntitySet="perfil">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="produtoes">
+      <EntityTypeMapping TypeName="StockModel.produto">
+        <MappingFragment StoreEntitySet="produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="codigo" ColumnName="codigo" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="preco_custo" ColumnName="preco_custo" />
+          <ScalarProperty Name="preco_venda" ColumnName="preco_venda" />
+          <ScalarProperty Name="quant_estoque" ColumnName="quant_estoque" />
+          <ScalarProperty Name="id_unidade_medida" ColumnName="id_unidade_medida" />
+          <ScalarProperty Name="id_grupo" ColumnName="id_grupo" />
+          <ScalarProperty Name="id_marca" ColumnName="id_marca" />
+          <ScalarProperty Name="id_fornecedor" ColumnName="id_fornecedor" />
+          <ScalarProperty Name="id_local_armazenamento" ColumnName="id_local_armazenamento" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+          <ScalarProperty Name="imagem" ColumnName="imagem" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="saida_produto">
+      <EntityTypeMapping TypeName="StockModel.saida_produto">
+        <MappingFragment StoreEntitySet="saida_produto">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="numero" ColumnName="numero" />
+          <ScalarProperty Name="data" ColumnName="data" />
+          <ScalarProperty Name="id_produto" ColumnName="id_produto" />
+          <ScalarProperty Name="quant" ColumnName="quant" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="unidade_medida">
+      <EntityTypeMapping TypeName="StockModel.unidade_medida">
+        <MappingFragment StoreEntitySet="unidade_medida">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="sigla" ColumnName="sigla" />
+          <ScalarProperty Name="ativo" ColumnName="ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuarios">
+      <EntityTypeMapping TypeName="StockModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="login" ColumnName="login" />
+          <ScalarProperty Name="senha" ColumnName="senha" />
+          <ScalarProperty Name="nome" ColumnName="nome" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="perfil_usuario" TypeName="StockModel.perfil_usuario" StoreEntitySet="perfil_usuario">
+      <EndProperty Name="perfil">
+        <ScalarProperty Name="id" ColumnName="id_perfil" />
+      </EndProperty>
+      <EndProperty Name="usuario">
+        <ScalarProperty Name="id" ColumnName="id_usuario" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>
